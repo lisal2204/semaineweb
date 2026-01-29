@@ -1,64 +1,310 @@
-/* Container principal */
-.container {
-  max-width: 1100px; /* Largeur max pour que ce soit élégant */
-  margin: 0 auto;
-  padding: 20px;
+e · CSS
+Copier
+
+:root {
+  --portal-green: #97ce4c;
+  --card-bg: #2b2b2b;
 }
 
-.container h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-family: Arial, sans-serif;
-}
-
-/* Le parent Flex */
-.perso-grid {
-  display: flex;
-  flex-wrap: wrap; /* Permet de passer à la ligne */
-  justify-content: center; /* Centre les cartes sur la ligne */
-  gap: 20px; /* Espace entre les cartes */
-}
-
-.perso-card {
-  flex: 0 1 calc(33.333% - 20px); 
-  
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.perso-img {
+body {
+  font-family: 'Arial', sans-serif;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+}
+
+/* Header / Hero */
+.hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%);
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 3px solid var(--portal-green);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--portal-green);
+  text-shadow: 0 0 20px rgba(151, 206, 76, 0.5);
+}
+
+.hero .and {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+/* Container principal */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Barre de filtres */
+.filters-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 12px 20px;
+  background: var(--card-bg);
+  border: 2px solid #444;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--portal-green);
+  box-shadow: 0 0 10px rgba(151, 206, 76, 0.3);
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.filter-select {
+  padding: 12px 20px;
+  background: var(--card-bg);
+  border: 2px solid #444;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.filter-select:hover {
+  border-color: var(--portal-green);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--portal-green);
+  box-shadow: 0 0 10px rgba(151, 206, 76, 0.3);
+}
+
+.filter-select option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Compteur de résultats */
+.results-count {
+  color: var(--portal-green);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Message aucun résultat */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.no-results p {
+  font-size: 1.5rem;
+}
+
+/* Grille de personnages */
+.perso-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Cartes de personnages */
+.perso-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  min-height: 380px;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.perso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(151, 206, 76, 0.3);
+}
+
+/* État masqué */
+.perso-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* État affiché */
+.perso-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-skeleton {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  color: var(--portal-green);
+  font-size: 2rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.img-container {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1/1;
+  background: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* Contenu textuel */
-.perso-info {
-  padding: 15px;
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
 }
 
-.perso-info h2 {
-  margin-top: 0;
-  font-size: 1.25rem;
-  color: #333;
+.status-badge.alive {
+  background: #55cc44;
+  color: #000;
 }
 
-/* Liste des détails */
-.details-list {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
+.status-badge.dead {
+  background: #d63d2e;
+  color: #fff;
 }
 
-.details-list li {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  color: #666;
+.status-badge.unknown {
+  background: #9e9e9e;
+  color: #000;
 }
 
+/* Contenu de la carte */
+.perso-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.perso-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  color: var(--portal-green);
+  font-weight: bold;
+}
+
+.perso-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.perso-content p span {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 5px;
+}
+
+/* Zone de chargement */
+.loading-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  padding: 40px 0;
+}
+
+/* Animation de la roue (portal loader) */
+.portal-loader {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(151, 206, 76, 0.2);
+  border-top-color: var(--portal-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero .and {
+    font-size: 1.8rem;
+  }
+  
+  .filters-bar {
+    flex-direction: column;
+  }
+  
+  .search-input,
+  .filter-select {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .perso-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .perso-grid {
+    grid-template-columns: 1fr;
+  }
+}
