@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export default function HomePage() {
-    const [tweets, setTweets] = useState([]);
-    const { getAccessTokenSilently } = useAuth0();
+    const [persos, setPersos] = useState([]);
 
-    useEffect(() => {
-        fetchHomeBeeps(getAccessTokenSilently, setTweets);
-    }, [getAccessTokenSilently]);
-
+    useEffect(() => {fetchPersos(setPersos, persos)}, []);
+/*
     return (
         <>
             <input onKeyUp={event => handlePostTweet(event, getAccessTokenSilently, setTweets)}></input>
@@ -19,21 +15,17 @@ export default function HomePage() {
                 </li>)}
             </ul>
         </>
-    )
+    )*/
 }
 
-async function fetchHomeBeeps(getAccessTokenSilently, setTweets){
-    const accessToken = await getAccessTokenSilently();
-    const response = await fetch("https://beeper-api-2.webdepinfo.fr/home", {
-        headers : {
-            authorization : `Bearer ${accessToken}`
-        }
-    });
+async function fetchPersos(setPersos, persos){
+    const response = await fetch("https://rickandmortyapi.com/api/character");
     const body = await response.json();
-    setTweets(body);
+    setPersos(body);
+    console.log(persos);
 }
-
-async function handlePostTweet(event, getAccessTokenSilently, setTweets) {
+/*
+async function handlePostTweet(event, setTweets) {
     if (event.code !== "Enter") {
         return;
     }
@@ -57,3 +49,4 @@ async function handlePostTweet(event, getAccessTokenSilently, setTweets) {
 }
 
 
+*/
