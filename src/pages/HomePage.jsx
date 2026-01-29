@@ -3,26 +3,40 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
     const [persos, setPersos] = useState([]);
 
-    useEffect(() => {fetchPersos(setPersos, persos)}, []);
-/*
+    console.log(persos);
+
+    useEffect(() => {fetchPersos(setPersos)}, []);
     return (
-        <>
-            <input onKeyUp={event => handlePostTweet(event, getAccessTokenSilently, setTweets)}></input>
-            <ul>
-                {tweets.map(tweet => <li key={tweet.id}>
-                    <div>{tweet.authorName}</div>
-                    <div>{tweet.content}</div>
-                </li>)}
-            </ul>
-        </>
-    )*/
+    <div className="container">
+        <h1>Rick & Morty Characters</h1>
+        
+        <div className="perso-grid">
+        {persos.map(perso => (
+            <div key={perso.id}>
+            
+            <img src={perso.image} alt={perso.name} className="perso-img" />
+            
+            <div className="perso-info">
+                <h2>{perso.name}</h2>
+                
+                <ul className="details-list">
+                <li><strong>Espèce :</strong> {perso.species}</li>
+                <li><strong>Genre :</strong> {perso.gender}</li>
+                <li><strong>Origine :</strong> {perso.origin.name}</li>
+                </ul>
+            </div>
+
+            </div>
+        ))}
+        </div>
+    </div>
+    );
 }
 
-async function fetchPersos(setPersos, persos){
+async function fetchPersos(setPersos){
     const response = await fetch("https://rickandmortyapi.com/api/character");
     const body = await response.json();
-    setPersos(body);
-    console.log(persos);
+    setPersos(body.results);
 }
 /*
 async function handlePostTweet(event, setTweets) {
