@@ -1,7 +1,64 @@
+/* Container principal */
 .container {
-    display : flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content: center;
-
+  max-width: 1100px; /* Largeur max pour que ce soit élégant */
+  margin: 0 auto;
+  padding: 20px;
 }
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: Arial, sans-serif;
+}
+
+/* Le parent Flex */
+.perso-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permet de passer à la ligne */
+  justify-content: center; /* Centre les cartes sur la ligne */
+  gap: 20px; /* Espace entre les cartes */
+}
+
+.perso-card {
+  flex: 0 1 calc(33.333% - 20px); 
+  
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.perso-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contenu textuel */
+.perso-info {
+  padding: 15px;
+}
+
+.perso-info h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* Liste des détails */
+.details-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.details-list li {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #666;
+}
+

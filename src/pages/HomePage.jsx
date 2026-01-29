@@ -13,7 +13,7 @@ export default function HomePage() {
         
         <div className="perso-grid">
         {persos.map(perso => (
-            <div key={perso.id}>
+            <div key={perso.id} className="perso-card">
             
             <img src={perso.image} alt={perso.name} className="perso-img" />
             
