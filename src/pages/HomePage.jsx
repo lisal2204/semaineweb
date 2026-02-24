@@ -22,13 +22,14 @@ function CharacterCard({ perso }) {
       
       {isLoaded && (
         <div className="perso-content">
-          <h3>{perso.name}</h3>
+          <h3><br></br>{perso.name}</h3>
           <p><span>Espèce:</span> {perso.species}</p>
           <p><span>Position:</span> {perso.location.name}</p>
+          <p><br></br></p>
         </div>
       )}
       
-      {!isLoaded && <div className="card-skeleton">🌀</div>}
+      {!isLoaded && <div className="card-skeleton"></div>}
     </div>
   );
 }
@@ -178,7 +179,7 @@ export default function HomePage() {
         <div className="filters-bar">
           <input 
             type="text" 
-            placeholder="🔍 Rechercher un personnage..."
+            placeholder="Rechercher un personnage"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
@@ -189,10 +190,10 @@ export default function HomePage() {
             onChange={(e) => setSelectedStatus(e.target.value)}
             className="filter-select"
           >
-            <option value="all">📊 Tous les statuts</option>
-            <option value="alive">✅ Alive</option>
-            <option value="dead">❌ Dead</option>
-            <option value="unknown">❓ Unknown</option>
+            <option value="all">Tous les statuts</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
           </select>
           
           <select 
@@ -200,7 +201,7 @@ export default function HomePage() {
             onChange={(e) => setSelectedSpecies(e.target.value)}
             className="filter-select"
           >
-            <option value="all">🧬 Toutes les espèces</option>
+            <option value="all">Toutes les espèces</option>
             {uniqueSpecies.map(species => (
               <option key={species} value={species}>{species}</option>
             ))}
