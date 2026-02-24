@@ -251,7 +251,7 @@ export default function HomePage() {
             onChange={(e) => setSelectedStatus(e.target.value)}
             className="filter-select"
           >
-            <option value="all">Tous les statuts</option>
+            <option value="all">Tous les status</option>
             <option value="alive">Alive</option>
             <option value="dead">Dead</option>
             <option value="unknown">Unknown</option>
@@ -319,7 +319,7 @@ export default function HomePage() {
         >
           <h4>Infos Complètes</h4>
           <p><strong>Nom : </strong>{hoverData.perso.name}</p>
-          <p><strong>Etat : </strong>{hoverData.perso.status}</p>
+          <p><strong>Status : </strong>{hoverData.perso.status}</p>
           <p><strong>Espèce : </strong>{hoverData.perso.species}</p>
           <p><strong>Genre : </strong>{hoverData.perso.gender}</p>
           <p><strong>Origine : </strong> {hoverData.perso.origin.name}</p>

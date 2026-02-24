@@ -332,13 +332,13 @@ body {
 }
 
 .mouse-popup {
-  pointer-events: none; /* Indispensable : la souris passe "à travers" */
+  pointer-events: none; 
   background: rgba(20, 23, 29, 0.95);
   color: #00ff00;
   border: 2px solid #00ff00;
   padding: 15px;
   border-radius: 8px;
-  z-index: 9999; /* Par-dessus tout le monde */
+  z-index: 9999;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   max-width: 250px;
   font-size: 0.9rem;
