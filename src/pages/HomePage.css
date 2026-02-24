@@ -28,7 +28,6 @@ body {
   background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%);
   padding: 60px 20px;
   text-align: center;
-  border-bottom: 3px solid var(--portal-green);
 }
 
 .hero h1 {
@@ -137,7 +136,6 @@ body {
 /* Cartes de personnages */
 .perso-card {
   border: 1px solid #fff;
-  cursor: pointer;
   background: var(--card-bg);
   border-radius: 15px;
   overflow: hidden;
@@ -197,7 +195,6 @@ body {
   display: block;
 }
 
-<<<<<<< Updated upstream
 .status-badge {
   position: absolute;
   top: 10px;
@@ -208,10 +205,6 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   backdrop-filter: blur(5px);
-=======
-.perso-info {
-  padding: 15px;
->>>>>>> Stashed changes
 }
 
 .status-badge.alive {
@@ -219,16 +212,9 @@ body {
   color: #000;
 }
 
-<<<<<<< Updated upstream
 .status-badge.dead {
   background: #d63d2e;
   color: #fff;
-=======
-.details-list {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
->>>>>>> Stashed changes
 }
 
 .status-badge.unknown {
@@ -322,4 +308,38 @@ body {
   .perso-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.fav-toggle-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.fav-toggle-btn {
+  background: #202329;
+  color: white;
+  border: 2px solid #ff0000;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.fav-toggle-btn:hover {
+  background: #ff0000;
+  color: white;
+}
+
+.mouse-popup {
+  pointer-events: none; /* Indispensable : la souris passe "à travers" */
+  background: rgba(20, 23, 29, 0.95);
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 9999; /* Par-dessus tout le monde */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 250px;
+  font-size: 0.9rem;
 }
