@@ -80,17 +80,23 @@ export default function HomePage() {
     perso: null 
   });
   
+  const timerRef = useRef(null);
+
   //pour suivre la souris avec le popup
   const handleMouseMove = (e, perso) => {
-    setHoverData({
-        visible: true,
-        x: e.clientX + 15,
-        y: e.clientY + 15,
-        perso: perso
-    });
+      clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => {
+        setHoverData({
+            visible: true,
+            x: e.clientX + 15,
+            y: e.clientY + 15,
+            perso: perso
+        });
+      }, 500);
   };
 
   const handleMouseLeave=()=>{
+    clearTimeout(timerRef.current);
     setHoverData({
         visible:false,
         x:0,
